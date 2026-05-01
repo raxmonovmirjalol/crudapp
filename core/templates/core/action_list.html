@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h1>Actions</h1>
+<a href="{% url 'action-create' %}">Create Action</a>
+<table border="1">
+    <tr><th>ID</th><th>Name</th><th>Active</th><th>Order</th><th>Date</th><th>Actions</th></tr>
+    {% for action in object_list %}
+    <tr>
+        <td>{{ action.id }}</td><td>{{ action.name }}</td><td>{{ action.active }}</td><td>{{ action.order }}</td><td>{{ action.date }}</td>
+        <td><a href="{% url 'action-update' action.pk %}">Edit</a> <a href="{% url 'action-delete' action.pk %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
