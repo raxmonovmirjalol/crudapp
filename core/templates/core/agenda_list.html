@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h1>Agenda</h1>
+<a href="{% url 'agenda-create' %}">Create Agenda</a>
+<table border="1">
+    <tr><th>ID</th><th>Action</th><th>Name</th><th>File Name</th><th>Order</th><th>Date</th><th>Actions</th></tr>
+    {% for agenda in object_list %}
+    <tr>
+        <td>{{ agenda.id }}</td><td>{{ agenda.action.name }}</td><td>{{ agenda.name }}</td><td>{{ agenda.file_name }}</td><td>{{ agenda.order }}</td><td>{{ agenda.date }}</td>
+        <td><a href="{% url 'agenda-update' agenda.pk %}">Edit</a> <a href="{% url 'agenda-delete' agenda.pk %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
